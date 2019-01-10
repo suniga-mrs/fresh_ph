@@ -37,11 +37,13 @@ main {
   font-family: 'Maven Pro', sans-serif;
 }
 
+#leading h1,
 nav h1 {
   font-size: 1.5em;
   /*color: yellow;*/
   margin-bottom: 0;
-  font-weight: 700;
+  font-family: 'Coiny', cursive;
+  /*font-weight: 700;*/
 }
 
 h4 {
@@ -55,7 +57,7 @@ p {
 /* /////////////// */
 .box {
   width: 100%;
-  min-height: 200px;
+  min-height: inherit;
   padding:0 1rem 1rem;
 }
 
@@ -64,15 +66,17 @@ a:hover,
 a:focus {
   color: inherit;
   text-decoration: none;
+
+
 }
 
-/*.red {
+.red {
   background-color: pink;
 }
 
 .green {
   background-color: lightgreen;
-}*/
+}
 
 .card {
   max-width: 100%;
@@ -87,9 +91,10 @@ a:focus {
   padding: 0.9rem;
 }
 
-.card-subtitle {
+.card-subtitle p {
   text-transform: uppercase;
-  
+  font-size: 0.7rem;
+
 }
 
 #categories_list  {
@@ -99,9 +104,41 @@ a:focus {
 
 #categories_list li:hover {
   background: #f2f2f2;
+  /*border: none;*/
 }
 
 #products_list h2 {
   font-size: 1.5em;
   text-transform: uppercase;
+}
+
+#products_list .add-to-cart {
+  font-size: 1em;
+  text-transform: uppercase;
+}
+
+#products_list select {
+  margin-right: 1rem;
+}
+
+
+#leading {
+  height: 40vh;
+  background-color: #333;
+}
+
+#leading h1 {
+  font-size: 4em;
+}
+
+#leading form {
+  padding:1rem;
+  border-radius:0.5rem;
+}
+
+#leading form input:focus {
+  text-align: center;
+}
+#leading form button {
+  width: 100%;
 }

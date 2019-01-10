@@ -1,6 +1,6 @@
 	<header>	
 		<nav class="navbar navbar-expand-sm bg-success navbar-dark">
-			<a class="navbar-brand" href="index.php"><h1>FRESH</h1></a>
+			<a class="navbar-brand" href="index.php"><h1><i class="fas fa-carrot"></i> FRESH</h1></a>
 			
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content">
 			    <span class="navbar-toggler-icon"></span>
@@ -10,8 +10,9 @@
 			  	<ul class="navbar-nav mr-auto">
 				    <li class="nav-item">
 				      <a class="nav-link" href="catalog.php">Catalog</a>
-				    </li><li class="nav-item">
-				      <a class="nav-link" href="#">Notes</a>
+				    </li>
+				    <li class="nav-item">
+				      <a class="nav-link" href="register.php">Register</a>
 				    </li>
 			  	</ul>
 			 </div>

@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  background: #fcfcfc;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #f5f5f5;
+}
+
+
+/* Main Styles
+-------------------------------------------------- */
+
+
+main {
+  font-family: 'Maven Pro', sans-serif;
+}
+
+nav h1 {
+  font-size: 1.5em;
+  /*color: yellow;*/
+  margin-bottom: 0;
+  font-weight: 700;
+}
+
+h4 {
+  font-weight: bold;
+}
+
+p {
+  font-size: 1.4em;  
+}

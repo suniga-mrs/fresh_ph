@@ -19,12 +19,12 @@
 		  	<div class="collapse navbar-collapse">
 			  	<ul class="navbar-nav ml-auto">
 				    <li class="nav-item">
-				      <a class="nav-link" href="#">Cart<span class="badge badge-light">1</span></a>
-				      
+				      <button type="button" class="btn btn-light">Cart  <span class="badge badge-light">0</span></button>
+
 				    </li>
 
 				    <li class="nav-item">
-				      <a class="nav-link" href="#">Log-out</a>
+				      <button type="button" class="btn btn-success dropdown-toggle">User</button>
 				    </li>
 			  	</ul>
 			 </div>

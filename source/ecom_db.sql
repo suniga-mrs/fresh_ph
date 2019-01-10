@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 10, 2019 at 03:42 AM
+-- Generation Time: Jan 10, 2019 at 06:00 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -33,6 +33,19 @@ CREATE TABLE `categories` (
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`) VALUES
+(1, 'produce'),
+(2, 'beverages'),
+(3, 'meat'),
+(4, 'frozen food'),
+(5, 'canned goods'),
+(6, 'bread'),
+(7, 'dry/baking goods');
+
 -- --------------------------------------------------------
 
 --
@@ -44,8 +57,23 @@ CREATE TABLE `items` (
   `name` varchar(255) NOT NULL,
   `price` decimal(18,2) NOT NULL,
   `image_path` varchar(255) DEFAULT NULL,
-  `category_id` int(11) NOT NULL
+  `category_id` int(11) NOT NULL,
+  `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `items`
+--
+
+INSERT INTO `items` (`id`, `name`, `price`, `image_path`, `category_id`, `description`) VALUES
+(1, 'Bread - Multigrain', '56.25', NULL, 6, 'Healthy'),
+(2, 'Beef - Rib Roast, Capless', '495.33', NULL, 3, 'Choice cut from premium beef. Per kilo'),
+(3, 'Waffles', '220.20', NULL, 4, 'Baker John\'s special waffles. 10pcs per package'),
+(4, 'Spaghetti Pasta', '123.63', NULL, 7, 'Ideal for a quick meal for the family'),
+(5, 'Tomato', '56.50', NULL, 1, 'Fresh produce'),
+(6, 'String Beans', '50.00', NULL, 1, 'Fresh produce'),
+(7, 'Banana', '85.00', NULL, 1, 'Fresh produce'),
+(8, 'Apple', '100.00', NULL, 1, 'Fresh produce');
 
 -- --------------------------------------------------------
 
@@ -174,13 +202,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `orders`

@@ -30,9 +30,12 @@ insert into items (id, name, price, description) values (29, 'Red Snapper - Fill
 insert into items (id, name, price, description) values (30, 'Shrimp - 31/40', 92.03, 'Ergonomic content-based task-force');
 insert into items (id, name, price, description) values (31, 'Cake - Bande Of Fruit', 16.85, 'Visionary national circuit');
 
-("Bread - Multigrain", "Healthy", 56.25, 6)
-("Beef - Rib Roast, Capless", "Choice cut from premium beef. Per kilo", "495.33", 3)
-("Waffles", "Baker John's special waffles. 10pcs per package", 220.20, 4)
-("Spaghetti Pasta", "", price, category_id)
-(name, description, price, category_id)
+("Bread - Multigrain", "Healthy", 56.25, 6),
+("Beef - Rib Roast, Capless", "Choice cut from premium beef. Per kilo", "495.33", 3),
+("Waffles", "Baker John's special waffles. 10pcs per package", 220.20, 4),
+("Spaghetti Pasta", "Ideal for a quick meal for the family", 123.63, 7),
+("Tomato", "Fresh produce", 56.5, 1),
+("String Beans", "Fresh produce", 50, 1),
+("Banana", "Fresh produce", 85, 1),
+("Apple", "Fresh produce", 100, 1)
 

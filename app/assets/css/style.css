@@ -56,7 +56,14 @@ p {
 .box {
   width: 100%;
   min-height: 200px;
-  padding:1rem;
+  padding:0 1rem 1rem;
+}
+
+a,
+a:hover,
+a:focus {
+  color: inherit;
+  text-decoration: none;
 }
 
 /*.red {
@@ -80,6 +87,11 @@ p {
   padding: 0.9rem;
 }
 
+.card-subtitle {
+  text-transform: uppercase;
+  
+}
+
 #categories_list  {
   text-transform: capitalize;
   font-weight: 700;
@@ -87,4 +99,9 @@ p {
 
 #categories_list li:hover {
   background: #f2f2f2;
+}
+
+#products_list h2 {
+  font-size: 1.5em;
+  text-transform: uppercase;
 }

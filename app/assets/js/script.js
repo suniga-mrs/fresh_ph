@@ -128,27 +128,33 @@ $(document).ready(function() {
 		event.stopPropagation();
 
 		//target is the one who triggered the event
-		let item_id = $(event.target).attr("data-id");
-		let item_qty = $(event.target).prev().val();
+		let item_id = parseInt($(event.target).attr("data-id"));
+		let item_qty = parseInt($(event.target).prev().val());
 
-		alert(item_id + " with a quantity of " + item_qty);
+		alert(typeof(item_id) + item_id + " with a quantity of " + item_qty);
 
 		$.ajax({
-			url: '../update/cart.php',
+			url: '../controllers/update_cart.php',
 			type: 'POST',
 			data: {
-				item: item_id,
+				item_id: item_id,
 				item_qty: item_qty
+			},
+			success: (data)=> {
+				$('#cart-count').html(data);
 			}
-		})
-		.done(function() {
-			console.log("success");
-		})
+		});
 		
 	});
 
-	// $('.add-to-cart').click(function(event) {
-	// });
+	$('#empty_cart').click(function(event) {
+		// event.preventDefault();
+		// $.ajax({
+		// 	url: '../controllers/empty_cart.php',
+		// 	data: {}
+		// });
+		
+	});
 
 
 // === END REGISTER VALIDATION === END REGISTER VALIDATION === END REGISTER VALIDATION === END REGISTER VALIDATION 

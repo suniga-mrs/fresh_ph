@@ -12,20 +12,22 @@
 					    <li class="nav-item">
 					      <a class="nav-link" href="catalog.php">Catalog</a>
 					    </li>
+					    <?php if (!isset($_SESSION['user'])) { ?>
 					    <li class="nav-item">
 					      <a class="nav-link" href="register.php">Register</a>
 					    </li>
 					    <li class="nav-item">
 					      <a class="nav-link" href="login.php">Login</a>
-					    </li>
+					    </li>					    	
+					    <?php } ?>
 				  	</ul>
 				 </div>
 			  	<?php if (isset($_SESSION['user'])) { ?><div class="collapse navbar-collapse">
 				  	<ul class="navbar-nav ml-auto">
 					    <li class="nav-item">
 					    	<div class="btn-group">
-					      		<button type="button" class="btn btn-success">Empty Cart</button>
-					     		 <button type="button" class="btn btn-success"><i class="fas fa-shopping-cart"></i> &nbsp;<span class="badge badge-warning">0</span></button>					    		
+					      		<button id="empty_cart"type="button" class="btn btn-success"><a href="../controllers/empty_cart.php">Empty Cart</a></button>
+					     		 <button type="button" class="btn btn-success"><i class="fas fa-shopping-cart"></i> &nbsp;<span id="cart-count" class="badge badge-warning"><?php if (isset($_SESSION['total_cart'])) { echo $_SESSION['total_cart']; } ?></span></button>					    		
 					    	</div>
 					    </li>
 

@@ -9,17 +9,18 @@ session_start();
 	$item_quantity = $_POST['item_qty'];
 
 
-	if($item_quantity == "0") {
+	if($item_quantity == 0) {
 		unset($_SESSION['cart'][$item_id]);
 	} else {
 		if (isset($_SESSION['cart'][$item_id])) {
-			$_SESSION['cart']['']
 			$_SESSION['cart'][$item_id] += $item_quantity;
 		} else {
 			$_SESSION['cart'][$item_id] = $item_quantity;
 			
 		}
 	}
+
+	$_SESSION['total_cart'] = getCartCount();
 
 	echo getCartCount();
  ?>

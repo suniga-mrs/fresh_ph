@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 10, 2019 at 07:08 AM
+-- Generation Time: Jan 11, 2019 at 08:51 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -66,11 +66,11 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`id`, `name`, `price`, `image_path`, `category_id`, `description`) VALUES
-(1, 'Bread - Multigrain', '56.25', NULL, 6, 'Healthy'),
-(2, 'Beef - Rib Roast, Capless', '495.33', NULL, 3, 'Choice cut from premium beef. Per kilo'),
-(3, 'Waffles', '220.20', NULL, 4, 'Baker John\'s special waffles. 10pcs per package'),
-(4, 'Spaghetti Pasta', '123.63', NULL, 7, 'Ideal for a quick meal for the family'),
-(5, 'Tomato', '56.50', NULL, 1, 'Fresh produce'),
+(1, 'Bread - Multigrain', '56.25', 'item_bread.jpg', 6, 'Healthy'),
+(2, 'Beef - Rib Roast, Capless', '495.33', 'item_beef_roast.jpg', 3, 'Choice cut from premium beef. Per kilo'),
+(3, 'Waffles', '220.20', 'item_waffles.jpg', 4, 'Baker John\'s special waffles. 10pcs per package'),
+(4, 'Spaghetti Pasta', '123.63', 'item_spaghetti.jpg', 7, 'Ideal for a quick meal for the family'),
+(5, 'Tomato', '56.50', 'item_tomato.jpg', 1, 'Fresh produce'),
 (6, 'String Beans', '50.00', NULL, 1, 'Fresh produce'),
 (7, 'Banana', '85.00', NULL, 1, 'Fresh produce'),
 (8, 'Apple', '100.00', NULL, 1, 'Fresh produce');
@@ -135,12 +135,26 @@ CREATE TABLE `statuses` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
+  `username` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `password` varchar(255) NOT NULL,
   `firstname` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `firstname`, `lastname`, `email`, `address`) VALUES
+(1, 'admin', '$2y$10$LwqGDHdkp1H9w1s6ntq/GOxqqbuZqxpUCMLiC9JaFtclI/pWTNufm', 'Michelle', 'Suniga', 'suniga.mrs@gmail.com', 'Imus, Cavite'),
+(3, 'aDmin', '$2y$10$527ybWs3fhveee..xMEMTeNrd1HQ5.e60UDraUS.GawYc2fvpr6zO', '231', '21321', '312312', '21321'),
+(5, 'Admin', '$2y$10$o5hMeQwL4jIGsTwiRfuhue7Agz4AQdSZdMJUxi5hqo.3Puwkaptuq', 'Hello', 'Name', 'example@outlook.com', 'Imus, Cavite'),
+(7, 'AdmiN', '$2y$10$/xQZ5yNNB1quCL8ODdBj.uG1jpvjGxkiP.9zU6IoiIrtHXz8W4yU2', 'Hello', 'Name', 'example@outlook.com', 'Imus, Cavite'),
+(9, 'ADMIN', '$2y$10$sgpYStkRXZPtee9bjFmT.Opf4/yTTsrjd5wA0PNY9rEbSnsw.gim2', '21321', '123213', '213213', '123213123'),
+(12, 'admin_12345', '$2y$10$0TvqPTEXzOCGS1cpR4cTQeHk11nOOpKrN89iuQ0/mgoFDEkfdyvZ.', 'Michelle', 'Suniga', 'example@outlook.com', 'Imus, Cavite'),
+(13, 'test_admin', '$2y$10$rTxTmGlz3J/Gfi5yRiVKIuVCNJnJDUJwSalLAb4genTtGUwU3RG1u', 'Michelle', 'Suniga', 'example@outlook.com', 'Imus, Cavite');
 
 --
 -- Indexes for dumped tables
@@ -192,7 +206,8 @@ ALTER TABLE `statuses`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -238,7 +253,7 @@ ALTER TABLE `statuses`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables

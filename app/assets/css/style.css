@@ -15,7 +15,7 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
   background: #fcfcfc;
-
+ 
   line-height: 1rem;
 }
 footer {
@@ -37,7 +37,7 @@ main {
   font-family: 'Maven Pro', sans-serif;
 }
 
-#leading h1,
+#register-landing h1,
 nav h1 {
   font-size: 1.5em;
   /*color: yellow;*/
@@ -117,28 +117,51 @@ a:focus {
   text-transform: uppercase;
 }
 
-#products_list select {
+#products_list input{
   margin-right: 1rem;
 }
 
 
-#leading {
-  height: 40vh;
-  background-color: #333;
-}
-
-#leading h1 {
+#register-landing h1 {
   font-size: 4em;
+  color: #5cb85c;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+}
+#register-landing h3 {
+  /*font-size: 4em;*/
+  color: #5cb85c;
+  padding: 0.5rem 0 0.8rem;
+}
+#register-landing h4 {
+  /*font-size: 4em;*/
+  color: #5cb85c;
+  /*padding: 0.5rem 0 0.8rem;*/
+  /*text-transform: uppercase;*/
 }
 
-#leading form {
+#register-landing p {
+    font-size: 1rem;
+    line-height: 1.2rem;
+}
+
+#register-landing form {
   padding:1rem;
   border-radius:0.5rem;
+  border: 1px solid #f4f4f4;
 }
 
-#leading form input:focus {
+/*#register-landing form input:focus {
   text-align: center;
-}
-#leading form button {
+}*/
+form button {
   width: 100%;
+}
+
+#register-landing form p {
+  font-size: 0.8rem;
+  margin-bottom: 3px;
+}
+
+.form-group {
+  margin-bottom: 12px;
 }

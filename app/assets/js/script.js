@@ -17,8 +17,15 @@ $(document).ready(function() {
 		el.parent().prev().append(`<span class="text-danger"> ${message}</span>`);
 	}
 
-	function resetMsg(el) {
-		el.parent().prev().children('span').remove();
+	function resetMsg() {
+		$('input#username').parent().prev().children('span').remove();
+		$('input#password').parent().prev().children('span').remove();
+		$('input#confirm_password').parent().prev().children('span').remove();
+		$('input#firstname').parent().prev().children('span').remove();
+		$('input#lastname').parent().prev().children('span').remove();
+		$('input#email').parent().prev().children('span').remove();
+		$('input#address').parent().prev().children('span').remove();
+
 	}
 
 	document.addEventListener("keyup", function(){
@@ -59,12 +66,11 @@ $(document).ready(function() {
 	
 	$('#registerBtn').click(function(event) {
 
+		resetMsg();
+
 		let i_username = username.val();
 		let i_password = password.val();
-		let i_firstname = firstname.val();
-		let i_lastname = lastname.val();
 		let i_email = email.val();
-		let i_address = address.val();
 		let i_confirm_password = confirm_password.val();
 
 		let errors = 0;
@@ -83,7 +89,7 @@ $(document).ready(function() {
 
 		if (i_password.length < 8) {
 			errorMsg(password, "Provide a stronger password");
-			password.val() = "";
+			i_password = "";
 			errors++;
 		} else {
 			if (i_password != i_confirm_password) {

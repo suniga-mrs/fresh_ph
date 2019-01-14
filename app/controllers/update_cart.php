@@ -9,25 +9,28 @@ session_start();
 	$item_quantity = $_POST['item_qty'];
 
 
-	if($item_quantity > 0) {
-		// unset($_SESSION['cart'][$item_id]);
-		if (isset($_SESSION['cart'][$item_id])) {
-			$_SESSION['cart'][$item_id] += $item_quantity;
+	if($item_quantity == "0") {
+		unset($_SESSION['cart'][$item_id]);
+	} else {
+		if(isset($_SESSION['cart'][$item_id])) {
+			$update_flag = $_POST['update_from_cart_page'];
+
+			if ($update_flag == 0) {
+				// adds new item
+				$_SESSION['cart'][$item_id] += $item_quantity;
+			} else {
+				// re-assigns new value
+				$_SESSION['cart'][$item_id] = $item_quantity;				
+			}
+
 		} else {
+			// if there is no value, assign $item_quantity as the value of $_SESSION['cart'][$item_id]
 			$_SESSION['cart'][$item_id] = $item_quantity;
 		}
-		$_SESSION['total_cart'] = getCartCount();
-
-	} else { 
-		if (isset($_SESSION['total_cart'])) {
-			echo $_SESSION['total_cart'];
-		} else {
-			echo 0;
-		}
-
-		
-
 	}
+
+	echo getCartCount();
+
 
 
  ?>

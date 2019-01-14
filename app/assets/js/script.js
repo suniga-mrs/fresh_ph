@@ -125,6 +125,8 @@ $(document).ready(function() {
 		 
 	});
 
+// === END REGISTER VALIDATION === END REGISTER VALIDATION === END REGISTER VALIDATION === END REGISTER VALIDATION 
+
 	$('#loginBtn').click(function(event) {
 		// resetMsg(username);
 	});
@@ -137,33 +139,81 @@ $(document).ready(function() {
 		let item_id = parseInt($(event.target).attr("data-id"));
 		let item_qty = parseInt($(event.target).prev().val());
 
-		alert(typeof(item_id) + item_id + " with a quantity of " + item_qty);
+		// alert(typeof(item_id) + item_id + " with a quantity of " + item_qty);
+
+		if(!(isNaN(item_qty))) {
+			$.ajax({
+				url: '../controllers/update_cart.php',
+				type: 'POST',
+				data: {
+					item_id: item_id,
+					item_qty: item_qty,
+					update_from_cart_page: 0
+				},
+				success: (data)=> {
+					$('#cart-count').html(data);
+				}
+			});
+		} else {
+			alert("Something went wrong.");
+		}
+		
+	});
+
+	function numberWithCommas(x) {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+
+	function removeCommas(x) {
+		return x.replace(/\,/g,"")
+	}
+
+	function get_total() {
+		let total = 0;
+
+		$(".item_subtotal").each(function(e) {
+			total += parseFloat(removeCommas($(this).html()));
+		});
+
+		console.log(total);
+		$("#total_price").html(numberWithCommas(total.toFixed(2)));
+	}
+
+	//edit cart
+	$('.item_quantity>input').on('input', (e) => {
+
+		let item_id = $(e.target).attr('data-id');
+		let item_qty = parseInt($(e.target).val());
+		let price = parseFloat($(e.target).parents('tr').find(".item_price").html());
+
+		// console.log(item_id + " " + item_qty + " " + price);
+
+		let subtotal = item_qty * price;
+		// $(e.target).parents('tr').find('.item_subtotal').html(subtotal.toFixed(2));
+		$(e.target).parents('tr').find('.item_subtotal').html(numberWithCommas(subtotal.toFixed(2)));
+
+		// console.log(subtotal);
 
 		$.ajax({
 			url: '../controllers/update_cart.php',
 			type: 'POST',
 			data: {
 				item_id: item_id,
-				item_qty: item_qty
+				item_qty: item_qty,
+				update_from_cart_page: 1
 			},
-			success: (data)=> {
+			success: (data) => {
 				$('#cart-count').html(data);
+				get_total();
 			}
 		});
 		
-	});
 
-	$('#empty_cart').click(function(event) {
-		// event.preventDefault();
-		// $.ajax({
-		// 	url: '../controllers/empty_cart.php',
-		// 	data: {}
-		// });
-		
-	});
+	})
 
 
-// === END REGISTER VALIDATION === END REGISTER VALIDATION === END REGISTER VALIDATION === END REGISTER VALIDATION 
+	
+
 
 
 

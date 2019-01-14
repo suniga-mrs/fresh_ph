@@ -25,10 +25,8 @@
 			  	<?php if (isset($_SESSION['user'])) { ?><div class="collapse navbar-collapse">
 				  	<ul class="navbar-nav ml-auto">
 					    <li class="nav-item">
-					    	<div class="btn-group">
-					      		<button id="empty_cart"type="button" class="btn btn-success"><a href="../controllers/empty_cart.php">Empty Cart</a></button>
-					     		 <button type="button" class="btn btn-success"><i class="fas fa-shopping-cart"></i> &nbsp;<span id="cart-count" class="badge badge-warning"><?php if (isset($_SESSION['total_cart'])) { echo $_SESSION['total_cart']; } ?></span></button>					    		
-					    	</div>
+					     		 <button type="button" class="btn btn-success"> <a href="cart.php"><i class="fas fa-shopping-cart"></i> &nbsp;<span id="cart-count" class="badge badge-warning"><?php if (isset($_SESSION['cart'])) { echo array_sum($_SESSION['cart']); } else { echo "0"; } ?></span></a></button>					    		
+					    	
 					    </li>
 
 					    <li class="nav-item">

@@ -128,37 +128,89 @@ $(document).ready(function() {
 // === END REGISTER VALIDATION === END REGISTER VALIDATION === END REGISTER VALIDATION === END REGISTER VALIDATION 
 
 	$('#loginBtn').click(function(event) {
-		// resetMsg(username);
+		let username = $("#username").val();
+		let password = $("#password").val();
+
+		// alert(username + " " + password);
+		$.ajax({
+			"url" : "../controllers/authenticate.php",
+			"method" : "POST",
+			"data": {
+				'username':username,
+				'password':password
+			},
+
+			"success":(data) => {
+				if(data == "login_failed") {
+					$("#username").next().html("Please provide correct credentials");
+				} else {
+					window.location.replace("../views/index.php");
+				}
+			}
+		});
+
 	});
 
-	$(document).on('click', '.add-to-cart', function(event) {
-		event.preventDefault();
-		event.stopPropagation();
+	$(document).on('click', '.add-to-cart', (e) => {
+		//to prevent default behavior and to override it with our own
+		e.preventDefault();
+		//prevent parent elements to be triggered
+		e.stopPropagation();
 
-		//target is the one who triggered the event
-		let item_id = parseInt($(event.target).attr("data-id"));
-		let item_qty = parseInt($(event.target).prev().val());
+		// target is the one who triggered event
+		let item_id = $(e.target).attr("data-id");
+		let item_quantity = parseInt($(e.target).prev().val());
 
-		// alert(typeof(item_id) + item_id + " with a quantity of " + item_qty);
-
-		if(!(isNaN(item_qty))) {
+		if(!(isNaN(item_quantity))) {
 			$.ajax({
-				url: '../controllers/update_cart.php',
-				type: 'POST',
-				data: {
-					item_id: item_id,
-					item_qty: item_qty,
-					update_from_cart_page: 0
+				"url" : "../controllers/update_cart.php",
+				"method" : "POST",
+				"data" : {
+					'item_id':item_id,
+					'item_qty':item_quantity,
+					'update_from_cart_page': 0
 				},
-				success: (data)=> {
-					$('#cart-count').html(data);
+				"success" : (data) => {
+					$("#cart-count").html(data);
 				}
 			});
+
 		} else {
 			alert("Something went wrong.");
 		}
-		
+
 	});
+
+
+
+
+	// $(document).on('click', '.add-to-cart', function(event) {
+	// 	event.preventDefault();
+	// 	event.stopPropagation();
+		//target is the one who triggered the event
+		// let item_id = parseInt($(event.target).attr("data-id"));
+		// let item_qty = parseInt($(event.target).prev().val());
+
+		// // alert(typeof(item_id) + item_id + " with a quantity of " + item_qty);
+
+		// if(!(isNaN(item_qty))) {
+		// 	$.ajax({
+		// 		url: '../controllers/update_cart.php',
+		// 		type: 'POST',
+		// 		data: {
+		// 			item_id: item_id,
+		// 			item_qty: item_qty,
+		// 			update_from_cart_page: 0
+		// 		},
+		// 		success: (data)=> {
+		// 			$('#cart-count').html(data);
+		// 		}
+		// 	});
+		// } else {
+		// 	alert("Something went wrong.");
+		// }
+		
+	// });
 
 	function numberWithCommas(x) {
 		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -206,14 +258,43 @@ $(document).ready(function() {
 				$('#cart-count').html(data);
 				get_total();
 			}
+		});	
+
+	});
+
+
+	$(document).on('click', '.item-remove', function(e) {
+		// alert("clicked");
+		let item_id = $(e.target).attr('data-id');
+		// alert(item_id);
+
+		$.ajax({
+			url: '../controllers/update_cart.php',
+			type: 'POST',
+			data: {
+				item_id: item_id,
+				item_qty: 0
+			},
+			beforeSend: () => {
+				return confirm("Are you sure you want to delete this item?");
+			},
+			success: (data) => {
+					$(e.target).parents('tr').fadeOut('slow');
+					$('#cart-count').html(data);
+					get_total();
+					setTimeout(function(){ 
+						$(e.target).parents('tr').remove();
+						window.location.replace("../views/cart.php")
+					}, 900);
+			}
 		});
-		
 
-	})
+	});
 
 
-	
-
+	$('#update_info').click( () => {
+		$('#update_user_details').submit();
+	});
 
 
 

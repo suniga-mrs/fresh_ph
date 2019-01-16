@@ -15,7 +15,7 @@ if (!isset($_SESSION['user'])) {
 	if (!password_verify($password, $user_info['password'])) {
 		die("login_failed");
 	} else {
-		$_SESSION['user'] = $user_info['username'];
+		$_SESSION['user'] = $user_info;
 		header("Location: ../views/index.php");
 	}
 } else {

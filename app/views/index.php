@@ -14,7 +14,7 @@
 				<div class="row text-center justify-content-center">
 					<div class="col-12">
 						<?php if (isset($_SESSION['user'])) { ?>
-						<h1>Hello! <?php echo $_SESSION['user']; ?></h1>
+						<h1>Hello! <?php echo $_SESSION['user']['username']; ?></h1>
 						<?php } else {?>
 						<h1>Hello!</h1>
 						<?php } ?>

@@ -22,19 +22,26 @@
 					    <?php } ?>
 				  	</ul>
 				 </div>
-			  	<?php if (isset($_SESSION['user'])) { ?><div class="collapse navbar-collapse">
+			  	<div class="collapse navbar-collapse">
 				  	<ul class="navbar-nav ml-auto">
 					    <li class="nav-item">
-					     		 <button type="button" class="btn btn-success"> <a href="cart.php"><i class="fas fa-shopping-cart"></i> &nbsp;<span id="cart-count" class="badge badge-warning"><?php if (isset($_SESSION['cart'])) { echo array_sum($_SESSION['cart']); } else { echo "0"; } ?></span></a></button>					    		
+					    	<?php if(isset($_SESSION['cart'])) { ?>
+								<button id="empty_cart"type="button" class="btn btn-success"><a href="../controllers/empty_cart.php">Empty Cart</a></button>
+					    	<?php } ?>
+					     		<button type="button" class="btn btn-success"> <a href="cart.php"><i class="fas fa-shopping-cart"></i> &nbsp;<span id="cart-count" class="badge badge-warning"><?php if (isset($_SESSION['cart'])) { echo array_sum($_SESSION['cart']); } else { echo "0"; } ?></span></a></button>					    		
 					    	
 					    </li>
-
+					<?php if (isset($_SESSION['user'])) { ?>
 					    <li class="nav-item">
 						    <div class="dropdown">
-						      <button type="button" class="btn btn-success dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"><?php echo $_SESSION['user']; ?></button>
-						      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    <a class="dropdown-item" href="../controllers/logout.php">Logout</a>
+							    <button type="button" class="btn btn-success dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"><?php echo $_SESSION['user']['username']; ?></button>
+						      	<div class="dropdown-menu">
+							    <a class="dropdown-item py-2" href="profile.php">Profile</a>
+							    <a class="dropdown-item py-2" href="new_item.php">Add Item</a>
+							    <hr class="my-2">
+							    <a class="dropdown-item py-2" href="../controllers/logout.php">Logout</a>
 						  		</div>
+						  		
 						    </div>
 					    </li>
 

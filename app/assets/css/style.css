@@ -165,3 +165,16 @@ form button {
 .form-group {
   margin-bottom: 12px;
 }
+
+#checkout_form p {
+  font-size: 1em;
+}
+
+#checkout_form #total_price {
+  font-size: 2.5em;
+  font-weight: 700;
+}
+
+#add_item_form label {
+  margin-top: 0.7rem;
+}

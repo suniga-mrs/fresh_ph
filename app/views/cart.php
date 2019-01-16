@@ -52,7 +52,7 @@
 							</td>
 							<td class="item_subtotal"> <?php echo $subtotal; ?></td>
 							<td class="item_action text-center">
-								<button class="btn btn-danger item-remove">Remove from cart</button>
+								<button class="btn btn-danger item-remove" data-id="<?php echo $id; ?>">Remove from cart</button>
 							</td>
 
 						</tr>
@@ -62,13 +62,16 @@
 						<tr>
 							<td colspan="3" class="text-right font-weight-bold">Total</td>
 							<td colspan="1" class="font-weight-bold" id="total_price"><?php echo $cart_total; ?></td>
+							<td colspan="1" class="font-weight-bold" id="total_price"><a href="checkout.php"><button class="btn btn-primary">Proceed to Checkout</button></a></td>
 						</tr>
 					</tfoot>
+
 					<?php } else {
 						echo '<tr><td class="text-center" colspan="5">No items in the cart</td></tr>';
 					} ?>
 				</table>	
-			</div>		
+			</div>	
+
 		</div>
 
 	<?php } ?>

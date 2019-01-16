@@ -32,7 +32,7 @@
 	$result = mysqli_query($conn, $sql);
 
 
-	$new_order_id = mysqli_insert_id($conn);
+	$new_order_id = mysqli_insert_id($conn); // Returns the id (generated with AUTO_INCREMENT) used in the last query, in this case the id from the query used to in the oreders table
 
 	if($result) {
 

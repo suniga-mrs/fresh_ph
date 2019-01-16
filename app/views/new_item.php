@@ -19,7 +19,7 @@
 			</div>
 			<div class="row">
 				<div class="offset-md-2 col-md-8">
-					<form id="add_item_form" method="POST">
+					<form id="add_item_form" method="POST" action="../controllers/process_add_item.php" enctype="multipart/form-data">
 						<div class="form-group">
 							<label for="item_name" class="form-control-label">Name:</label>
 							<input id="item_name" type="text" name="item_name" class="form-control" required>
@@ -51,7 +51,7 @@
 						<label for="item_description" class="form-control-label">Image:</label>
 						<input id="item_image" type="file" name="item_image" class="form-control-file" required>
 						<div class="form-group pt-4">
-							<button id="addItemBtn" type="button" class="btn btn-primary">Add Item</button>
+							<button id="addItemBtn" type="submit" class="btn btn-primary">Add Item</button>
 						</div>
 					</form>
 				</div>

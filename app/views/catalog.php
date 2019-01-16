@@ -97,13 +97,6 @@
 										<div class="card-footer flex-row flex-wrap">
 											<form class="d-flex flex-row">
 												<input type="number" name="item_quantity" class="form-control" min="0" value="1">
-											<!--   <select class="custom-select">
-												<option value="1">1</option>
-												<option value="2">2</option>
-												<option value="3">3</option>
-												<option value="4">4</option>
-												<option value="5">5</option>
-												</select> -->
 											  <div class="btn btn-primary add-to-cart" data-id="<?php echo $item['id']; ?>" ><i class="fas fa-plus"></i></div>
 											</form>
 										</div>

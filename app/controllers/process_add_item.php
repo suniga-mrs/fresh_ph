@@ -15,7 +15,8 @@
 	$sql = "INSERT INTO items(name, price, description, category_id, image_path) VALUES ('$name', '$price', '$desc', '$category_id', '$image')";
 
 	mysqli_query($conn, $sql);
-	header("Location: ../views/catalog.php");
+
+	header("Location: " . $_SERVER['HTTP_REFERER']);
 	// print_r($_POST);
 	// echo "<br>";
 	// print_r($_FILES);

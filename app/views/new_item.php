@@ -8,6 +8,9 @@
 	} ?>
 
 	<?php function get_page_content() { 
+
+		if((isset($_SESSION['user'])) && $_SESSION['user']['roles_id'] == 1) {
+
 			global $conn;
 		?>
 
@@ -30,7 +33,7 @@
 								</div>
 								<div class="col">
 									<label for="item_category" class="form-control-label">Category:</label>
-									<select id="item_category" name="item_category" class="form-control">
+									<select id="item_category" name="item_category" class="form-control" required>
 										<?php 
 										$sql = "SELECT * FROM categories";
 										$categories = mysqli_query($conn, $sql);
@@ -59,4 +62,12 @@
 		</div>
 
 
-	<?php } ?>
+	<?php 
+
+		} else { 
+
+			header("Location: ./error.php");
+
+		}
+
+	}?>

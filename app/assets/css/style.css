@@ -174,7 +174,24 @@ form button {
   font-size: 2.5em;
   font-weight: 700;
 }
-
-#add_item_form label {
+#add_item_form label,
+#edit_item_form label {
   margin-top: 0.7rem;
+}
+
+#admin_controls a {
+  font-size: 0.8em;
+  padding: 0.6em 0.7em;
+
+}
+
+#admin_controls a:last-child {
+margin-left: 8px;
+}
+
+#addItemBtn {
+  width: 100%;
+}
+
+select option {
 }

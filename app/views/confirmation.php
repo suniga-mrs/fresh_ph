@@ -7,7 +7,11 @@
 
 	} ?>
 
-	<?php function get_page_content() { ?>
+	<?php function get_page_content() { 
+
+		if((isset($_SESSION['user'])) && $_SESSION['user']['roles_id'] == 2) {
+
+		?>
 
 		<div class="container main-container my-4">
 	        <div class="row">
@@ -26,4 +30,12 @@
 
 
 
-	<?php } ?>
+	<?php 
+
+		} else { 
+
+			header("Location: ./error.php");
+
+		}
+
+	} ?>

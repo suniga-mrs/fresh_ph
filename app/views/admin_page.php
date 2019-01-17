@@ -7,12 +7,13 @@
 
 	} ?>
 
-	<?php function get_page_content() { 
+	<?php 
+		function get_page_content() { 
 
-		if((isset($_SESSION['user'])) && $_SESSION['user']['roles_id'] == 2) {
-			
-		global $conn;
-
+			if((isset($_SESSION['user'])) && $_SESSION['user']['roles_id'] == 1) {
+					
+			global $conn;
+			// print_r($_SESSION['user']);
 	?>
 			
 	<?php
@@ -33,7 +34,6 @@
 			$sql2 .= $_SESSION['sort'];
 		}
 
-
 		$categories = mysqli_query($conn, $sql1);
 		$items = mysqli_query($conn, $sql2);
 
@@ -41,42 +41,43 @@
 		<!-- HTML CONTENT HERE  -->
 		<section id="products_list" class="pt-4" >
 			<div class="container">
+				<div class="row"> 
+					<div class="col-12 text-center">
+						<h1>Admin Page</h1>
+					</div>
+				</div>
+				<hr>
 				<div class="row py-1">
 					<div class="col-md-3">
 						<div class="col-12">
+							<a id="addItemBtn" href="./new_item.php" class="btn btn-warning py-2 mb-4">Add Item</a>
+						</div>	
+
+						<div class="col-12">
 							<h2>Categories</h2>
 						</div>
-						<div class="">
+						<div class="col-12">
 							<div id="categories_list">
 								<ul class="list-group">
-									<a href="catalog.php?category=all">
+									<a href="admin_page.php?category=all">
 										<li class="list-group-item">All</li>
 									</a>
-					<?php foreach ($categories as $category) { ?>
-						<a href="catalog.php?category=<?php echo $category['id']; ?>">
-					<li class="list-group-item"><?php echo $category['name']; ?></li></a>
-					<?php } ?>
-			</ul>
+									<?php foreach ($categories as $category) { ?>
+										<a href="admin_page.php?category=<?php echo $category['id']; ?>">
+									<li class="list-group-item"><?php echo $category['name']; ?></li></a>
+									<?php } ?>
+								</ul>
 							</div>				
 						</div>
-						<div class="col-12 mt-3">
+<!-- 						<div class="col-12 mt-3">
 							<h2>Sort</h2>
-						</div>
-						<div id="sort_items">
-								<ul class="list-group">
-									<a href="../controllers/item_sort.php?sort=asc">
-										<li class="list-group-item">Price: Low to High</li>
-									</a>
-									<a href="../controllers/item_sort.php?sort=dsc">
-										<li class="list-group-item">Price: High to Low</li>
-									</a>
-								</ul>
-							</div>	
+						</div> -->
+						
 					</div>
-					<div class="col-md-9">
-						<div class="col-4">
+					<div class="col-md-9">	
+		<!-- 				<div class="col-4">
 							<h2 >Products</h2>
-						</div>
+						</div> -->
 						<div class="">
 							<div class="row flex-row flex-wrap">
 								<?php foreach ($items as $item) { ?>
@@ -96,15 +97,14 @@
 											</div>
 											<h6>P<?php echo $item['price']; ?></h6>
 										</div>
-										<div class="card-footer flex-row flex-wrap">
-											<form class="d-flex flex-row">
-												<input type="number" name="item_quantity" class="form-control" min="0" value="1">
-											  <div class="btn btn-primary add-to-cart" data-id="<?php echo $item['id']; ?>" ><i class="fas fa-plus"></i></div>
+										<div class="card-footer">
+											<form id="admin_controls" class="d-flex flex-row">
+												<a href="edit_item.php?id=<?php echo $item['id']; ?>" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
+												<a href="#" class="btn btn-secondary delete_item" data-id="<?php echo $item['id']; ?>"><i class="fas fa-trash-alt"></i> Remove</a>
 											</form>
 										</div>
 									</div>
 								</div>								
-							
 								<?php } ?>
 							</div>
 						</div>
@@ -116,11 +116,10 @@
 
 	<?php 
 
-		} else { 
-
-			header("Location: ./error.php");
-
-		}
+	} else { 
+		header("Location: ./error.php");
 
 	}?>
+
+<?php }?>
 

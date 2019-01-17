@@ -155,11 +155,13 @@ $(document).ready(function() {
 		//to prevent default behavior and to override it with our own
 		e.preventDefault();
 		//prevent parent elements to be triggered
-		e.stopPropagation();
+		// e.stopPropagation();
 
 		// target is the one who triggered event
 		let item_id = $(e.target).attr("data-id");
 		let item_quantity = parseInt($(e.target).prev().val());
+
+		alert( item_id + " with a quantity of " + item_quantity);
 
 		if(!(isNaN(item_quantity))) {
 			$.ajax({
@@ -295,6 +297,42 @@ $(document).ready(function() {
 	$('#update_info').click( () => {
 		$('#update_user_details').submit();
 	});
+
+
+	$(document).on('click', '.delete_item', function(e) {
+		e.preventDefault();
+
+		let item_id = $(e.target).attr('data-id');
+		// alert(item_id);
+
+		if (item_id !== undefined) {
+			$.ajax({
+				url: '../controllers/process_delete_item.php',
+				type: 'GET',
+				data: {
+					id: item_id
+				},
+				beforeSend: () => {
+					return confirm("Are you sure you want to delete this item?");
+				},
+				success: (data) => {
+
+					if (data == "") {
+						window.location.replace("../views/admin_page.php");
+					} else {
+						alert('Item cannot be deleted');
+					}
+				}
+			});
+		} else {
+			alert("Something went wrong.");
+		}
+
+
+
+
+	});
+
 
 
 

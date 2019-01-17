@@ -318,7 +318,7 @@ $(document).ready(function() {
 				success: (data) => {
 
 					if (data == "") {
-						window.location.replace("../views/admin_page.php");
+						window.location.replace("../views/items.php");
 					} else {
 						alert('Item cannot be deleted');
 					}
@@ -329,9 +329,77 @@ $(document).ready(function() {
 		}
 
 
+	});
+
+	$(document).on('click', '.admin_user_ctrl', function(e) {
+		e.preventDefault();
+		let user_id = $(e.target).attr('data-user-id');
+		let user_role = $(e.target).attr('data-user-role');
+		// alert(user_id + " and " + user_role);
+		if (user_id !== undefined || user_role !== undefined ) {
+			$.ajax({
+				url: '../controllers/grant_admin.php',
+				type: 'POST',
+				data: {
+					user_id: user_id,
+					user_role: user_role
+				},
+				beforeSend: () => {
+					return confirm("Are you sure you want to change account type?");
+				},
+				success: (data) => {
+					if (data == "failed") {
+						alert('User role cannot be changed');
+					} else {
+						window.location.replace("../views/users.php");
+						
+					}
+				}
+			});
+		} else {
+			alert("Something went wrong.");
+		}
 
 
 	});
+
+
+	$(document).on('click', '.admin_user_del', function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+
+		let user_id = $(e.target).attr('data-user-id');
+		// alert(user_id + " and " + user_role);
+		if (user_id !== undefined) {
+			$.ajax({
+				url: '../controllers/delete_user.php',
+				type: 'POST',
+				data: {
+					user_id: user_id
+				},
+				beforeSend: () => {
+					return confirm("Are you sure you want to delete this account?");
+				},
+				success: (data) => {
+					if (data == "failed") {
+						alert('Account cannot be deleted');
+					} else {
+						$(e.target).parents('tr').fadeOut('slow');
+						setTimeout(function(){ 
+							$(e.target).parents('tr').remove();
+							window.location.replace("../views/cart.php")
+						}, 900);
+			
+					}
+				}
+			});
+		} else {
+			alert("Something went wrong.");
+		}
+
+
+	});
+
 
 
 

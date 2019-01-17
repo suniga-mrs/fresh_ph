@@ -11,7 +11,10 @@
 				  	<ul class="navbar-nav mr-auto">
 					     <?php if (isset($_SESSION['user']) && $_SESSION['user']['roles_id'] == 1) { ?>
 					     	<li class="nav-item">
-							    <a class="nav-link" href="admin_page.php">Admin Page</a>
+							    <a class="nav-link" href="items.php">Items</a>
+							</li>
+							<li class="nav-item">
+							    <a class="nav-link" href="users.php">Users</a>
 							</li>
 						<?php } else if ( !isset($_SESSION['user']) || $_SESSION['user']['roles_id'] == 2) {?>
 						<li class="nav-item">

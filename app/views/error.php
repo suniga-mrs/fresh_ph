@@ -14,5 +14,4 @@
 			<a href="index.php" class="btn btn-primary">Go Back Home</a>
 		</div>
 
-
 	<?php } ?>

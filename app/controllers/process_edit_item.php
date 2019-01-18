@@ -14,7 +14,7 @@ require_once './connect.php';
 	if(!$result) {
 		echo "edit_failed";
 	} else {
-		header("Location: ../views/admin_page.php");
+		header("Location: ../views/items.php");
 	}
 
 	mysqli_close($conn);

@@ -16,7 +16,7 @@
 
 	mysqli_query($conn, $sql);
 
-	header("Location: " . $_SERVER['HTTP_REFERER']);
+	header("Location: ../views/items.php");
 	// print_r($_POST);
 	// echo "<br>";
 	// print_r($_FILES);

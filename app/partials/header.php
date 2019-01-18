@@ -16,6 +16,9 @@
 							<li class="nav-item">
 							    <a class="nav-link" href="users.php">Users</a>
 							</li>
+							<li class="nav-item">
+							    <a class="nav-link" href="orders.php">Orders</a>
+							</li>
 						<?php } else if ( !isset($_SESSION['user']) || $_SESSION['user']['roles_id'] == 2) {?>
 						<li class="nav-item">
 					      <a class="nav-link" href="catalog.php">Catalog</a>

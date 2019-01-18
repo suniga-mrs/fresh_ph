@@ -9,7 +9,7 @@
 
 	<?php function get_page_content() { 
 
-		if((isset($_SESSION['user'])) && $_SESSION['user']['roles_id'] == 2) {
+		if((!isset($_SESSION['user'])) || $_SESSION['user']['roles_id'] == 2) {
 			
 		global $conn;
 

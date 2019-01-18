@@ -401,6 +401,41 @@ $(document).ready(function() {
 	});
 
 
+	$(document).on('click', '.order_ctrl', function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+
+		let order_id = $(e.target).attr('data-order-id');
+		let new_status = $(e.target).attr('data-status');
+		// alert(user_id + " and " + user_role);
+		if (order_id !== undefined && new_status !== undefined) {
+			$.ajax({
+				url: '../controllers/change_order_status.php',
+				type: 'POST',
+				data: {
+					order_id: order_id,
+					new_status: new_status
+				},
+				beforeSend: () => {
+					return confirm("Are you sure you want to change this order's status?");
+				},
+				success: (data) => {
+					if (data == "failed") {
+						alert('Status was not changed.');
+					} else {
+						//add confirmation that the item was updated
+						window.location.replace("../views/orders.php");			
+					}
+				}
+			});
+		} else {
+			alert("Something went wrong.");
+		}
+
+
+	});
+
+
 
 
 

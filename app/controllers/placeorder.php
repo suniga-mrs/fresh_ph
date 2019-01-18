@@ -154,9 +154,12 @@
 
 
     $redirectUrls = new RedirectUrls();
+    // $redirectUrls
+    //     ->setReturnUrl('http://localhost/batch19/capstone2/app/controllers/pay.php?success=true')
+    //     ->setCancelUrl('http://localhost/batch19/capstone2/app/controllers/pay.php?success=false'); 
     $redirectUrls
-        ->setReturnUrl('http://localhost/batch19/capstone2/app/controllers/pay.php?success=true')
-        ->setCancelUrl('http://localhost/batch19/capstone2/app/controllers/pay.php?success=false');
+        ->setReturnUrl('https://fresh-ph.herokuapp.com/app/controllers/pay.php?success=true')
+        ->setCancelUrl('https://fresh-ph.herokuapp.com/app/controllers/pay.php?success=false');
 
     $payment = new Payment();
     $payment->setIntent('sale')

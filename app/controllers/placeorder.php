@@ -48,7 +48,8 @@
 	$address = $_POST['addressLine1'];
 
 	// FOR COD Payment
-	if($payment_mode == 1) {
+	if($payment_mode_id == 1) {
+
 		$transaction_code = generate_new_transaction_number();
 		$_SESSION['new_txn_number'] = $transaction_code;
 
@@ -117,64 +118,64 @@
 
 	} else { //FOR PAYPAL Payment
 
-    $_SESSION['address'] = $address;
-    $_SESSION['total'] = $total_amt;
-    $payer = new Payer();
-    $payer->setPaymentMethod('paypal');
+	    $_SESSION['address'] = $address;
+	    $_SESSION['total'] = $total_amt;
+	    $payer = new Payer();
+	    $payer->setPaymentMethod('paypal');
 
-    $total = 0;
-    $items = [];
-    foreach($_SESSION['cart'] as $id => $quantity){
-        $sql = "SELECT * FROM items WHERE id =$id";
-        $result = mysqli_query($conn, $sql);
-        $item = mysqli_fetch_assoc($result);
-        extract($item);
-        $total += $price*$quantity;
-        $indiv_item = new Item();
-        $indiv_item->setName($name)
-                ->setCurrency('PHP')
-                ->setQuantity($quantity)
-                ->setPrice($price);
-        $items[] = $indiv_item;        
-    }
+	    $total = 0;
+	    $items = [];
+	    foreach($_SESSION['cart'] as $id => $quantity){
+	        $sql = "SELECT * FROM items WHERE id =$id";
+	        $result = mysqli_query($conn, $sql);
+	        $item = mysqli_fetch_assoc($result);
+	        extract($item);
+	        $total += $price*$quantity;
+	        $indiv_item = new Item();
+	        $indiv_item->setName($name)
+	                ->setCurrency('PHP')
+	                ->setQuantity($quantity)
+	                ->setPrice($price);
+	        $items[] = $indiv_item;        
+	    }
 
-    $item_list = new ItemList();
-    $item_list->setItems($items);
+	    $item_list = new ItemList();
+	    $item_list->setItems($items);
 
-    $amount = new Amount();
-    $amount->setCurrency("PHP")
-        ->setTotal($total);
+	    $amount = new Amount();
+	    $amount->setCurrency("PHP")
+	        ->setTotal($total);
 
-    $transaction = new Transaction();
-    $transaction ->setAmount($amount)
-                ->setItemList($item_list)
-                ->setDescription('Payment for Fresh PH')
-                ->setInvoiceNumber(uniqid("FreshPH_"));
+	    $transaction = new Transaction();
+	    $transaction ->setAmount($amount)
+	                ->setItemList($item_list)
+	                ->setDescription('Payment for Fresh PH')
+	                ->setInvoiceNumber(uniqid("FreshPH_"));
 
 
 
-    $redirectUrls = new RedirectUrls();
-    // $redirectUrls
-    //     ->setReturnUrl('http://localhost/batch19/capstone2/app/controllers/pay.php?success=true')
-    //     ->setCancelUrl('http://localhost/batch19/capstone2/app/controllers/pay.php?success=false'); 
-    $redirectUrls
-        ->setReturnUrl('https://fresh-ph.herokuapp.com/app/controllers/pay.php?success=true')
-        ->setCancelUrl('https://fresh-ph.herokuapp.com/app/controllers/pay.php?success=false');
+	    $redirectUrls = new RedirectUrls();
+	    // $redirectUrls
+	    //     ->setReturnUrl('http://localhost/batch19/capstone2/app/controllers/pay.php?success=true')
+	    //     ->setCancelUrl('http://localhost/batch19/capstone2/app/controllers/pay.php?success=false'); 
+	    $redirectUrls
+	        ->setReturnUrl('https://fresh-ph.herokuapp.com/app/controllers/pay.php?success=true')
+	        ->setCancelUrl('https://fresh-ph.herokuapp.com/app/controllers/pay.php?success=false');
 
-    $payment = new Payment();
-    $payment->setIntent('sale')
-        ->setPayer($payer)
-        ->setRedirectUrls($redirectUrls)
-        ->setTransactions([$transaction]);
+	    $payment = new Payment();
+	    $payment->setIntent('sale')
+	        ->setPayer($payer)
+	        ->setRedirectUrls($redirectUrls)
+	        ->setTransactions([$transaction]);
 
-    try{
-        $payment->create($paypal);
-    } catch(Exception $e){
-        die($e->getData());
-    }
+	    try{
+	        $payment->create($paypal);
+	    } catch(Exception $e){
+	        die($e->getData());
+	    }
 
-    $approvalUrl = $payment->getApprovalLink();
-    header('location: '.$approvalUrl);    
+	    $approvalUrl = $payment->getApprovalLink();
+	    header('location: '.$approvalUrl);    
 }
 
 

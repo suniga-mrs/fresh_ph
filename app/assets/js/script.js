@@ -296,7 +296,19 @@ $(document).ready(function() {
 
 
 	$('#update_info').click( () => {
-		$('#update_user_details').submit();
+
+		let username = $('#username').val();
+		let firstname = $('#firstname').val();
+		let lastname = $('#lastname').val();
+		let email = $('#email').val();
+		let address = $('#address').val();
+
+		if (username == "" || firstname == "" || lastname == "" || email == "" || address == "") {
+			alert('Error');
+		} else {
+			$('#update_user_details').submit();			
+		}
+
 	});
 
 

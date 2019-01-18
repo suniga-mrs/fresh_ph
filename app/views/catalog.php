@@ -82,6 +82,7 @@
 								<?php foreach ($items as $item) { ?>
 								<div class="col-6 col-md-3">
 									<div class="card">
+										<img src="../assets/images/<?php echo $item['image_path']; ?>" alt="<?php echo $item['item_name']; ?>" class="card-img-top">
 										<div class="card-body">
 											<div class="card-title">
 												<h5><?php echo $item['item_name']; ?></h5>

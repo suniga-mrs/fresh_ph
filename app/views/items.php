@@ -59,11 +59,11 @@
 						<div class="col-12">
 							<div id="categories_list">
 								<ul class="list-group">
-									<a href="admin_page.php?category=all">
+									<a href="items.php?category=all">
 										<li class="list-group-item">All</li>
 									</a>
 									<?php foreach ($categories as $category) { ?>
-										<a href="admin_page.php?category=<?php echo $category['id']; ?>">
+										<a href="items.php?category=<?php echo $category['id']; ?>">
 									<li class="list-group-item"><?php echo $category['name']; ?></li></a>
 									<?php } ?>
 								</ul>

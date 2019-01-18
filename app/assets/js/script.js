@@ -158,8 +158,9 @@ $(document).ready(function() {
 		// e.stopPropagation();
 
 		// target is the one who triggered event
-		let item_id = $(e.target).attr("data-id");
-		let item_quantity = parseInt($(e.target).prev().val());
+		let trigger_el = $(e.target);
+		let item_id = trigger_el.attr("data-id");
+		let item_quantity = parseInt(trigger_el.prev().val());
 
 		alert( item_id + " with a quantity of " + item_quantity);
 

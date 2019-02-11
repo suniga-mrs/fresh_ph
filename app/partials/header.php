@@ -47,9 +47,9 @@
 						    <div class="dropdown">
 							    <button type="button" class="btn btn-success dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"><?php echo $_SESSION['user']['username']; ?></button>
 						      	<div class="dropdown-menu">
-							    <a class="dropdown-item py-2" href="profile.php">Profile</a>
+							    <a class="dropdown-item py-2 text-dark" href="profile.php">Profile</a>
 							    <hr class="my-2">
-							    <a class="dropdown-item py-2" href="../controllers/logout.php">Logout</a>
+							    <a class="dropdown-item py-2 " href="../controllers/logout.php">Logout</a>
 						  		</div>
 						  		
 						    </div>

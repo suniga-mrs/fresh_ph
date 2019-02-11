@@ -100,8 +100,8 @@
 										</div>
 										<div class="card-footer">
 											<form id="admin_controls" class="d-flex flex-row">
-												<a href="edit_item.php?id=<?php echo $item['id']; ?>" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
-												<a href="#" class="btn btn-secondary delete_item" data-id="<?php echo $item['id']; ?>"><i class="fas fa-trash-alt"></i> Remove</a>
+												<button href="edit_item.php?id=<?php echo $item['id']; ?>" class="btn btn-primary"><i class="fas fa-pen"></i> Edit</button>
+												<button href="#" class="btn btn-secondary delete_item" data-id="<?php echo $item['id']; ?>"><i class="fas fa-trash-alt"></i> Remove</button>
 											</form>
 										</div>
 									</div>
